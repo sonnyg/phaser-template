@@ -1,0 +1,24 @@
+{
+  "name": "phaser-template",
+  "version": "1.0.0",
+  "description": "Simple, vanilla javascript project template for phaser games\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sonnyg/phaser-template.git"
+  },
+  "keywords": [
+    "phaser",
+    "javascript",
+    "vanilla"
+  ],
+  "author": "Sonny George",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sonnyg/phaser-template/issues"
+  },
+  "homepage": "https://github.com/sonnyg/phaser-template#readme"
+}
