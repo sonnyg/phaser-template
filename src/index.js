@@ -1,11 +1,11 @@
-import './lib/phaser.min.mjs'
+import './lib/phaser.min.js'
 import config from './config.mjs'
-import BootScene from './scenes/boot-scene.mjs'
-import CreditsScene from './scenes/credits-scene.mjs'
-import GameScene from './scenes/game-scene.mjs'
-import OptionsScene from './scenes/options-scene.mjs'
-import PreloaderScene from './scenes/preloader-scene.mjs'
-import TitleScene from './scenes/title-scene.mjs'
+import BootScene from './scenes/boot-scene.js'
+import CreditsScene from './scenes/credits-scene.js'
+import GameScene from './scenes/game-scene.js'
+import OptionsScene from './scenes/options-scene.js'
+import PreloaderScene from './scenes/preloader-scene.js'
+import TitleScene from './scenes/title-scene.js'
 
 class Game extends Phaser.Game {
     constructor(config) {
