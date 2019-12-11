@@ -112,7 +112,7 @@ export default class PreloaderScene extends Phaser.Scene {
 
         // // update file progress text
         this.load.on(Phaser.Loader.Events.FILE_LOAD, (file) => {
-            assetText.setText(`Loading asset: ${file.key}`)
+            assetText.setText(`Loading ${file.type}: ${file.key}`)
         })
         
         // remove progress bar when complete
