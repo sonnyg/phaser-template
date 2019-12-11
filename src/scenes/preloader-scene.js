@@ -34,8 +34,8 @@ export default class PreloaderScene extends Phaser.Scene {
             this.loadingText.setText('hit any key to continue')
 
             // support either a key input, or pointer event
-            this.input.keyboard.on('keydown', event => this.scene.start('title-scene'))
-            this.input.on('pointerdown', event => this.scene.start('title-scene'))
+            this.input.keyboard.on('keydown', event => this.scene.start('title'))
+            this.input.on('pointerdown', event => this.scene.start('title'))
         })
     
         this.time.delayedCall(this.checkAssetsDelay, () => {
