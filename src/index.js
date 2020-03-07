@@ -1,5 +1,5 @@
 import './lib/phaser.min.js'
-import config from './config.mjs'
+import config from './config.js'
 import BootScene from './scenes/boot-scene.js'
 import CreditsScene from './scenes/credits-scene.js'
 import GameScene from './scenes/game-scene.js'
