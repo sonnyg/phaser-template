@@ -106,8 +106,5 @@ export default class OptionsScene extends Phaser.Scene {
         } else {
             this.soundButton.setTexture('checkedBox')
         }
-
-        console.log('music on', this.musicOn)
-        console.log('sound on', this.soundOn)
     }
 }
