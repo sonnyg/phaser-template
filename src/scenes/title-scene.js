@@ -97,19 +97,20 @@ export default class TitleScene extends Phaser.Scene {
         buttons.forEach(button => {
             button.data = {
                 onOverStrokeStyle: [3, 0xEF8963, .85],
-                onOutStrokeStyle: button.strokeStyle || [0],
-                onOverTween: this.tweens.create({
-                    targets: button,
-                    scale: 1.2,
-                    duration: 500,
-                    ease: 'Power2',
-                }),
-                onOutTween: this.tweens.create({
-                    targets: button,
-                    scale: 1.0,
-                    duration: 500,
-                    ease: 'Power2',
-                })
+                onOutStrokeStyle: button.strokeStyle || [0]
+                // ,
+                // onOverTween: this.tweens.create({
+                //     targets: button,
+                //     scale: 1.2,
+                //     duration: 500,
+                //     ease: 'Power2',
+                // }),
+                // onOutTween: this.tweens.create({
+                //     targets: button,
+                //     scale: 1.0,
+                //     duration: 500,
+                //     ease: 'Power2',
+                // })
             }
 
             console.log(button.data)
