@@ -77,19 +77,7 @@ export default class TitleScene extends Phaser.Scene {
         this.centerAlignGameObjects(this.creditsText, this.creditsButton)
         // var hsv = Phaser.Display.Color.HSVColorWheel();
 
-        this.startGameButton.on('pointerdown', (event) => {
-            console.log('start game')
-        })
-
-        this.optionsButton.on('pointerdown', (event) => {
-            console.log('options')
-        })
-
-        this.creditsButton.on('pointerdown', (event) => {
-            console.log('credits')
-        })
-
-        const buttons = [this.startGameButton, this.optionsButton, this.creditsButton]
+        this.buttons = [this.startGameButton, this.optionsButton, this.creditsButton]
 
         // add event handling for the buttons
         // buttons.forEach(button => {
@@ -106,7 +94,7 @@ export default class TitleScene extends Phaser.Scene {
 
         // set data on all buttons, including tweens to handle mouse interactions. Executing these causes the 'scale' to
         // momentarily be set to '0'. Not sure why.
-        buttons.forEach(button => {
+        this.buttons.forEach(button => {
             button.data = {
                 onOverStrokeStyle: [3, 0xEF8963, .85],
                 onOutStrokeStyle: button.strokeStyle || [0]
@@ -127,6 +115,16 @@ export default class TitleScene extends Phaser.Scene {
 
             // console.log(button.data)
         }, this)
+
+        this.startGameButton.on('pointerdown', this.startGame, this)
+
+        this.optionsButton.on('pointerdown', (pointer) => {
+            console.log('options')
+        })
+
+        this.creditsButton.on('pointerdown', (pointer) => {
+            console.log('credits')
+        })
 
         // console.log(this.tweens)
         this.input.on('gameobjectover', function (pointer, gameObject) {
@@ -164,10 +162,17 @@ export default class TitleScene extends Phaser.Scene {
         }, this)
     }
 
+    startGame() {
+        // Found that the 'data' property of GameObjects, if truthy, is expected to have a 'destroy' method. If not
+        // present, a 'TypeError' is thrown. The solution here may be the wrong thing to do, but for now, it works.
+        this.buttons.forEach(button => button.data = undefined)
+        this.scene.start('game')
+    }
+
     centerAlignGameObjects (gameObject1, gameObject2) {
         Phaser.Display.Align.In.Center(
             gameObject1,
             gameObject2
-        );
+        )
     }
 }
