@@ -77,6 +77,18 @@ export default class TitleScene extends Phaser.Scene {
         this.centerAlignGameObjects(this.creditsText, this.creditsButton)
         // var hsv = Phaser.Display.Color.HSVColorWheel();
 
+        this.startGameButton.on('pointerdown', (event) => {
+            console.log('start game')
+        })
+
+        this.optionsButton.on('pointerdown', (event) => {
+            console.log('options')
+        })
+
+        this.creditsButton.on('pointerdown', (event) => {
+            console.log('credits')
+        })
+
         const buttons = [this.startGameButton, this.optionsButton, this.creditsButton]
 
         // add event handling for the buttons
@@ -113,7 +125,7 @@ export default class TitleScene extends Phaser.Scene {
                 // })
             }
 
-            console.log(button.data)
+            // console.log(button.data)
         }, this)
 
         // console.log(this.tweens)
