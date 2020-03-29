@@ -62,6 +62,8 @@ export default class OptionsScene extends Phaser.Scene {
         }, this)
 
         this.input.on('gameobjectover', (pointer, gameObject) => {
+            if (!gameObject.data) return
+
             gameObject.setStrokeStyle(...gameObject.data.onOverStrokeStyle)
 
             if (gameObject.data?.tween) {
@@ -76,6 +78,8 @@ export default class OptionsScene extends Phaser.Scene {
         }, this)
 
         this.input.on('gameobjectout', (pointer, gameObject) => {
+            if (!gameObject.data) return
+
             gameObject.setStrokeStyle(...gameObject.data.onOutStrokeStyle)
 
             if (gameObject.data?.tween) {
@@ -102,5 +106,8 @@ export default class OptionsScene extends Phaser.Scene {
         } else {
             this.soundButton.setTexture('checkedBox')
         }
+
+        console.log('music on', this.musicOn)
+        console.log('sound on', this.soundOn)
     }
 }
