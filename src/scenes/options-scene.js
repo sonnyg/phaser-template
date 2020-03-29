@@ -51,13 +51,46 @@ export default class OptionsScene extends Phaser.Scene {
 
         Phaser.Display.Align.In.Center(this.menuText, this.menuButton)
 
-        this.menuButton.on('pointerdown', (pointer) => {
+        this.menuButton.data = {
+            onOverStrokeStyle: [3, 0xEF8963, .85],
+            onOutStrokeStyle: this.menuButton.strokeStyle || [0]
+        }
+
+        this.menuButton.on('pointerdown', pointer => {
+            this.menuButton.data = undefined
             this.scene.start('title')
         }, this)
+
+        this.input.on('gameobjectover', (pointer, gameObject) => {
+            gameObject.setStrokeStyle(...gameObject.data.onOverStrokeStyle)
+
+            if (gameObject.data?.tween) {
+                gameObject.data.tween.stop()
+            }
+            gameObject.data.tween = this.tweens.add({
+                targets: gameObject,
+                scale: 1.2,
+                duration: 500,
+                ease: 'Power2',
+            })
+        }, this)
+
+        this.input.on('gameobjectout', (pointer, gameObject) => {
+            gameObject.setStrokeStyle(...gameObject.data.onOutStrokeStyle)
+
+            if (gameObject.data?.tween) {
+                gameObject.data.tween.stop()
+            }
+            gameObject.data.tween = this.tweens.add({
+                targets: gameObject,
+                scale: 1.0,
+                duration: 500,
+                ease: 'Power2',
+            })
+        })
     }
 
     updateAudio() {
-        console.log('updating audio')
         if (this.musicOn === false) {
             this.musicButton.setTexture('box')
         } else {
