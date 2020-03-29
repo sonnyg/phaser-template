@@ -4,7 +4,7 @@ export default class TitleScene extends Phaser.Scene {
     }
 
     init() {
-        this.mainTheme = this.sound.add('main-theme', { volume: 0.5, loop: true });
+        // this.mainTheme = this.sound.add('main-theme', { volume: 0.5, loop: true });
         // this.mainTheme.play();
     }
 
