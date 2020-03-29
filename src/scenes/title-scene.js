@@ -117,14 +117,8 @@ export default class TitleScene extends Phaser.Scene {
         }, this)
 
         this.startGameButton.on('pointerdown', this.startGame, this)
-
-        this.optionsButton.on('pointerdown', (pointer) => {
-            console.log('options')
-        })
-
-        this.creditsButton.on('pointerdown', (pointer) => {
-            console.log('credits')
-        })
+        this.optionsButton.on('pointerdown', this.showOptions, this)
+        this.creditsButton.on('pointerdown', this.showCredits, this)
 
         // console.log(this.tweens)
         this.input.on('gameobjectover', function (pointer, gameObject) {
@@ -163,10 +157,22 @@ export default class TitleScene extends Phaser.Scene {
     }
 
     startGame() {
+        this.startScene('game')
+    }
+
+    showOptions() {
+        this.startScene('options')
+    }
+
+    showCredits() {
+        this.startScene('credits')
+    }
+
+    startScene(scene) {
         // Found that the 'data' property of GameObjects, if truthy, is expected to have a 'destroy' method. If not
         // present, a 'TypeError' is thrown. The solution here may be the wrong thing to do, but for now, it works.
         this.buttons.forEach(button => button.data = undefined)
-        this.scene.start('game')
+        this.scene.start(scene)
     }
 
     centerAlignGameObjects (gameObject1, gameObject2) {
