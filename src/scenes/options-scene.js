@@ -4,6 +4,7 @@ export default class OptionsScene extends Phaser.Scene {
     }
 
     create() {
+        this.gameOrigin = { x: this.sys.game.config.width >> 1, y: this.sys.game.config.height >> 1 }
         this.musicOn = true
         this.soundOn = true
 
@@ -29,8 +30,25 @@ export default class OptionsScene extends Phaser.Scene {
 
         this.updateAudio()
 
-        this.menuButton = this.add.sprite(400, 500, 'blueButton1').setInteractive()
-        this.menuText = this.add.text(0, 0, 'Menu', { fontSize: '32px', fill: '#fff' })
+        const fillStyle = [0x88bb88, 0.85]
+        this.fontStyle = { font: '24px monospace', fill: '#ffffff' }
+        this.buttonGap = 50
+
+            // , { fontSize: '32px', fill: '#fff' })
+        // start game - background followed by text
+        this.menuButton = this.add
+            .rectangle(
+                this.gameOrigin.x,
+                this.gameOrigin.y + this.buttonGap * 4,
+                180,
+                30)
+            .setFillStyle(...fillStyle)
+            .setInteractive()
+
+        this.menuText = this.add.text()
+            .setStyle(this.fontStyle)
+            .setText('Menu')
+
         Phaser.Display.Align.In.Center(this.menuText, this.menuButton)
 
         this.menuButton.on('pointerdown', (pointer) => {
@@ -39,6 +57,7 @@ export default class OptionsScene extends Phaser.Scene {
     }
 
     updateAudio() {
+        console.log('updating audio')
         if (this.musicOn === false) {
             this.musicButton.setTexture('box')
         } else {
