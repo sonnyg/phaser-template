@@ -21,5 +21,25 @@ export default class CreditsScene extends Phaser.Scene {
 
         // move off screen so it can scroll into view later
         this.madeByText.setY(1000)
+
+        this.creditsTween = this.tweens.add({
+            targets: this.creditsText,
+            y: -100,
+            ease: 'Power2',
+            duration: 3000,
+            delay: 1000 //,
+            // callbackScope: this,
+            // onComplete: () => console.log('bye credits tween')
+        })
+
+        this.madeByTween = this.tweens.add({
+            targets: this.madeByText,
+            y: -300,
+            ease: 'Power2',
+            duration: 8000,
+            delay: 1000,
+            callbackScope: this,
+            onComplete: () => this.scene.start('title')
+        })
     }
 }
